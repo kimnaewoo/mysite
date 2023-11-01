@@ -36,9 +36,7 @@
   </head>
   <body>
     <!-- 1.상단영역 -->
-    <div id="top-area">
-      <header class="top-area ibx common-area"></header>
-    </div>
+    <?php include "inc/top_area.inc" ?>
     <!-- 2.메인영역 -->
     <div id="main-area">
       <main class="main-area ibx">
@@ -49,7 +47,7 @@
         </header>
         <!-- 2-2. 갤러리 페이지 컨텐츠 박스 -->
         <section class="scont">
-          <form action="process.php" method="post" class="logF">
+          <form action="process/ins.php" method="post" class="logF">
             <ul>
               <!-- 아이디 -->
               <li>
@@ -156,9 +154,7 @@
       </main>
     </div>
     <!-- 3.하단영역 -->
-    <div id="footer-area">
-      <footer class="footer-area ibx common-area"></footer>
-    </div>
+    <?php include "inc/footer.inc" ?>
 
     <!-- 위로가기버튼 -->
     <a href="#" class="tbtn fi fi-angle-up">
