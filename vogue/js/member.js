@@ -395,8 +395,8 @@ $('#btnj').click(e=>{
 
   // 4. 검사결과에 따라 메시지 보이기 
   if(pass){
-    // 오리지널 포스트 방식으로 전송함
-    $('.logF').submit();
+    // 오리지널 포스트 방식으로 전송함 -> ajax처리시엔 주석!
+    // $('.logF').submit();
     // 현재 페이지 form정보가 모두 inc/ins.php로 이동하여 데이터를 처리한다. - 동기화 방식 
     // -> 현재 페이지를 가만히 두고 처리페이지로 비동기적인 처리를 하는 것이 바로 Ajax!!! 
 
@@ -417,27 +417,38 @@ $('#btnj').click(e=>{
 
       $.post(
         // 1. 전송할페이지
-          "process/ins.php",
+        "process/ins.php",
         // 2. 전송할데이터 : {} 객체로 전송
-          {
-            // 1.아이디
-            "mid":$("#mid").val(),
-            // 2.비번
-            "mpw":$("#mpw").val(),
-            // 3.이름
-            "mnm":$("#mnm").val(),
-            // 4.성별 : 라디오태그에 value속성 필수!
-            "gen":$(":radid[name=gen]:checked").val(),
-            // 5-1.이메일 앞주소
-            "email1":$("#email1").val(),
-            // 5-2.이메일 뒷주소
-            "seleml":$("#seleml").val(),
-            // 5-3.직접입력 이메일 뒷주소
-            "email2":$("#email2").val(),
-          },
+        {
+          // 1.아이디
+          "mid":$("#mid").val(),
+          // 2.비번
+          "mpw":$("#mpw").val(),
+          // 3.이름
+          "mnm":$("#mnm").val(),
+          // 4.성별 : 라디오태그에 value속성 필수!
+          "gen":$(":radio[name=gen]:checked").val(),
+          // 5-1.이메일 앞주소
+          "email1":$("#email1").val(),
+          // 5-2.이메일 뒷주소
+          "seleml":$("#seleml").val(),
+          // 5-3.직접입력 이메일 뒷주소
+          "email2":$("#email2").val(),
+        },
         // 3. 전송후콜백함수
-          
-        ); // ajax post()
+        function(res){ // res - 리턴값 받기변수 
+          console.log('서버응답:',res);
+          // 성공시 
+          if(res === 'ok'){
+            alert('회원가입을 축하드립니다!');
+            // location.replace('login.php');
+          } // if : 성공시
+          else{
+            alert(res);
+          } // else : 실패시 
+        } // 전송후 콜백함수 
+
+      ); // ajax post()
 
 
     // alert('회원가입을 축하드립니다!');
