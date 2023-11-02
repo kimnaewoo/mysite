@@ -41,6 +41,8 @@
     <script type="module" src="./js/gallery.js"></script>
   </head>
   <body>
+    <!-- 로그인 처리 인클루드파일 호출 -->
+    <?php include "inc/login_session.inc" ?>
     <!-- 1.상단영역 -->
     <div id="top-area">
       <header class="top-area ibx common-area"></header>
