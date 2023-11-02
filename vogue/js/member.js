@@ -155,15 +155,72 @@ form.logF input[type=password]`)
         // [ 불통과시 pass값 변경 ]
         pass = false;
       } //////// if ///////
-      else {
-        // 통과시
+      else { // 통과시
+        /* 
+          [ Ajax로 중복아이디 검사하기 ]
+          ajax 처리 유형 2가지 
+
+          1) post 방식 처리 메서드 
+          - $.post(URL,data,callback함수)
+
+          2) get 방식 처리 메서드
+          - $.get(URL,callback)
+          -> get방식은 URL로 키=값 형식으로 데이터전송함 
+
+          3) 위의 2가지 유형 중 처리선택 메서드 
+          - $.ajax({
+            전송할페이지,
+            전송방식,
+            보낼데이터,
+            전송할데이터타입,
+            비동기옵션,
+            성공처리,
+            실패처리
+          }) -> 보내는 값은 하나(객체데이터) -> 객체안에 7가지 유형의 데이터를 보냄 
+          
+        */
+          $.ajax({
+            // 1. 전송할페이지 (url)
+            url:"./process/chkID.php",
+            // 2. 전송방식 (type)
+            type:"post",
+            // 3. 보낼데이터 (data)
+            data:{"mid":$('#mid').val()},
+            // 4. 전송할데이터타입 (dataType)
+            dataType:"html",
+            // 5. 비동기옵션 (async)
+            // -> 비동기옵션은 본처리를 비동기적으로 처리하겠다는 것임 (기본값이 true)
+            // false로 해야 동기화 처리되어 불통과시 pass=false가 유효함!
+            async:false,
+            // 6. 성공처리 (success)
+            success:function(res){
+              // res - 리턴된 결과값
+              if(res=='ok'){
+                $('#mid').siblings(".msg").text("멋진 아이디네요~!").addClass("on");
+              }
+              else{
+                $('#mid').siblings(".msg").text("이미 사용중인 아이디입니다!").removeClass("on");
+              }
+            },
+            실패처리
+          })
+        
+
+
+
+
+
+
+
+
+
         // 1. DB에 조회하여 같은 아이디가 있다면
         // '이미 사용중인 아이디입니다' 와 같은 메시지출력
         // 2. 만약 DB조회하여 같은 아이다가 없다면
         // '멋진 아이디네요~!'와 같은 메시지출력
         // 여기서 우선은 DB조회 못하므로 통과시 메시지로 출력
         // 메시지 띄우기
-        $(this).siblings(".msg").text("멋진 아이디네요~!").addClass("on");
+        // $(this).siblings(".msg").text("멋진 아이디네요~!").addClass("on");
         // 비동기 통신 Ajax로 서버쪽에 아이디 중복검사 필요!
       } ////// else //////
     } /////////////// else if : 아이디검사 ///////
