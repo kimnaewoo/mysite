@@ -4,15 +4,19 @@
 
 /******* 1000px 이하 미디어쿼리 시작 *******/
 @media screen and (max-width: 1000px) {
-  /* 상단영역 */
-  #top-area.on{
-    padding-left: 120px;
-  }
+    /* 상단영역 */
+    #top-area{
+        padding-left: 120px;
+    }
 }
 /******* 1000px 이하 미디어쿼리 끝 *******/
 
+
 /******* 650px 이하 미디어쿼리 시작 *******/
 @media screen and (max-width: 650px) {
+    #top-area{
+        padding-left: 0;
+    }
   /* 상단영역 .on적용시 조정 */
   #top-area.on{
     padding-left: 0px;
@@ -26,7 +30,6 @@
   #top-area.on .logo img {
     width: 132px;
   }
-
   /* 1. 없앨 요소들: .tmenu,.gnb */
   .tmenu,
   .gnb {
@@ -150,4 +153,4 @@
 
 }
 
-/******* 650px 이하 미디어쿼리 끝 *******/
+/******* 500px 이하 미디어쿼리 끝 *******/

@@ -1,6 +1,6 @@
-// 상단, 하단 공통 모듈 html코드
+// 상단, 하단 공통 모듈 html 코드
 export default {
-    topArea:`
+    topArea: `
     <!-- 1-1.상단메뉴 -->
     <div class="tmenu">
         <!-- 1-1-1.sns박스 -->
@@ -86,9 +86,8 @@ export default {
             </li>
         </ul>
     </nav>
-
     `,
-    footerArea:`
+    footerArea: `
     <!-- 3-1.하단로고 -->
     <div class="blogo">
         <img src="./images/footer_logo.png" alt="하단로고">
@@ -126,8 +125,7 @@ export default {
             <span class="ir">search</span>
         </a>
     `,
-    // 모바일메뉴박스코드 : 
-    // header.top-area 바깥에 넣기(#top-area안에)
+    // 모바일메뉴박스코드 : header.top-area 바깥에 넣기(#top-area안에)
     mobx:`
         <!-- 1.4.모바일 검색박스 -->
         <div class="mos">
@@ -220,4 +218,4 @@ export default {
             </ul>
         </div>
     `,
-}
+};
